@@ -11,16 +11,6 @@ public:
         this->next = NULL;
     }
 };
-void print(Node *head)
-{
-    Node *temp = head;
-    while (temp != NULL)
-    {
-        cout << temp->data << " ";
-        temp = temp->next;
-    }
-    cout << endl;
-}
 Node *reverse(Node *head)
 {
     Node *curr = head;
