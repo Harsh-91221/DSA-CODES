@@ -1,11 +1,15 @@
 #include <iostream>
-#define SIZE(arr) (sizeof(arr) / sizeof(arr[0]))
 using namespace std;
 class Node
 {
 public:
     int data;
     Node *next;
+    Node(int data)
+    {
+        this->data = data;
+        this->next = NULL;
+    }
 };
 void print(Node *head)
 {
@@ -16,21 +20,6 @@ void print(Node *head)
         temp = temp->next;
     }
     cout << endl;
-}
-Node *createList(int *arr, int n)
-{
-    Node *head, *p;
-    p = head = new Node;
-    head->data = arr[0];
-    head->next = NULL;
-    for (int i = 1; i < n; ++i)
-    {
-        p->next = new Node;
-        p = p->next;
-        p->data = arr[i];
-        p->next = NULL;
-    }
-    return head;
 }
 Node *solve(Node *first, Node *second)
 {
@@ -87,16 +76,22 @@ Node *sortTwoLists(Node *first, Node *second)
 }
 int main()
 {
-    int arr1[4] = {10, 15, 17, 20};
-    int arr2[4] = {5, 9, 13, 19};
-    Node *first, *second, *result = NULL;
-    first = createList(arr1, SIZE(arr1));
-    second = createList(arr2, SIZE(arr1));
-    cout << "First sorted list: " << endl;
-    print(first);
-    cout << "Second sorted list: " << endl;
-    print(second);
-    result = sortTwoLists(first, second);
-    cout << "Final sorted list: " << endl;
-    print(result);
+    Node *head = new Node(1);
+    Node *a = new Node(2);
+    Node *b = new Node(4);
+    Node *c = new Node(9);
+    head->next = a;
+    a->next = b;
+    b->next = c;
+    c->next = NULL;
+    Node *head1 = new Node(3);
+    Node *a1 = new Node(5);
+    Node *b1 = new Node(7);
+    Node *c1 = new Node(8);
+    head1->next = a1;
+    a1->next = b1;
+    b1->next = c1;
+    c1->next = NULL;
+    Node *temp = sortTwoLists(head, head1);
+    print(temp);
 }
