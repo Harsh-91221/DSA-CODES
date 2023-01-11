@@ -21,6 +21,7 @@ public:
         this->size = size;
         this->head = NULL;
     }
+
     void push(int d)
     {
         Node *temp = new Node(d);
@@ -28,6 +29,7 @@ public:
         temp->next = head;
         head = temp;
     }
+
     void pop()
     {
         if (head == NULL)
@@ -39,6 +41,7 @@ public:
         temp->next = NULL;
         delete temp;
     }
+
     int top()
     {
         if (head == NULL)
@@ -51,6 +54,7 @@ public:
             return head->data;
         }
     }
+
     bool isempty()
     {
         if (head == NULL)
