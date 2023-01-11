@@ -8,7 +8,7 @@ public:
     int top;
     int size;
 
-    // BEHAVIOURf
+    // BEHAVIOUR
     Stack(int size)
     {
         this->size = size;
@@ -80,7 +80,8 @@ int main()
     st.push(5);
     st.push(4);
     st.push(98);
-    st.push(76);
+    st.pop();
+    st.pop();
     cout << st.peek() << endl;
     if (st.isempty())
     {
