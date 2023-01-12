@@ -3,15 +3,20 @@
 using namespace std;
 void solve(stack<int> &s, int x)
 {
+    // TEMPORARY STACK
     stack<int> temp;
+    // ITERATE UNTIL s IS EMPTY
     while (!s.empty())
     {
+        // PUSH TOP ELEMENT OF S INTO TEMP STACK
         temp.push(s.top());
         s.pop();
     }
     s.push(x);
+    // ITERATE UNTIL temp IS EMPTY
     while (!temp.empty())
     {
+        // PUSH TOP ELEMENT OF TEMP INTO s STACK
         s.push(temp.top());
         temp.pop();
     }
@@ -21,7 +26,6 @@ void solve(stack<int> &s, int x)
         s.pop();
     }
 }
-
 int main()
 {
     stack<int> s;
