@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include <stack>
+#include <queue>
 void interLeaveQueue(queue<int> &q)
 {
     queue<int> newq;
