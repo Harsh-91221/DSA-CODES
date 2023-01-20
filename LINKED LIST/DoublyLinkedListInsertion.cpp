@@ -37,26 +37,27 @@ int getlength(node *head)
     }
     return len;
 }
-void insertAthead(node *&head, int d)
-{
-    node *temp = new node(d);
-    temp->next = head;
-    head->prev = head;
-    head = temp;
-}
-//************PROBLEM NEED TO BE SOLVED BECAUSE OF GARBAGE VALUE IN OUTPUT**************
-// void insertAttail(node *&tail, int d)
+// void insertAthead(node *&head, int d)
 // {
 //     node *temp = new node(d);
-//     tail->next = temp;
-//     temp->prev = tail;
-//     tail = temp;
+//     temp->next = head;
+//     head->prev = head;
+//     head = temp;
 // }
+//************PROBLEM NEED TO BE SOLVED BECAUSE OF GARBAGE VALUE IN OUTPUT**************
+void insertAttail(node *&tail, int d)
+{
+    node *temp = new node(d);
+    tail->next = temp;
+    temp->prev = tail;
+    temp->next = NULL;
+    tail = temp;
+}
 void insertAtpos(node *&head, int pos, int d)
 {
     if (pos == 1)
     {
-        insertAthead(head, d);
+        insertAttail(head, d);
         return;
     }
     node *temp = head;
@@ -79,18 +80,18 @@ int main()
     node *head = n1;
     node *tail = n1;
     print(head);
-    insertAthead(head, 11);
-    print(head);
-    insertAthead(head, 15);
-    print(head);
-    insertAthead(head, 21);
-    print(head);
-    // insertAttail(tail, 23);
+    // insertAthead(head, 11);
     // print(head);
-    // insertAttail(tail, 26);
+    // insertAthead(head, 15);
     // print(head);
-    // insertAttail(tail, 28);
+    // insertAthead(head, 21);
     // print(head);
+    insertAttail(tail, 23);
+    print(head);
+    insertAttail(tail, 26);
+    print(head);
+    insertAttail(tail, 28);
+    print(head);
     insertAtpos(head, 2, 7);
     print(head);
     cout << "LENGTH IS " << getlength(head) << endl;
