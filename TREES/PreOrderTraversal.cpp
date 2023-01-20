@@ -30,20 +30,20 @@ node *buildtree(node *root)
     root->right = buildtree(root->right);
     return root;
 }
-void inorder(node *root)
+void preorder(node *root)
 {
     if (root == NULL)
     {
         return;
     }
     cout << root->data << " ";
-    inorder(root->left);
-    inorder(root->right);
+    preorder(root->left);
+    preorder(root->right);
 }
 int main()
 {
     node *root = NULL;
     root = buildtree(root);
-    cout << "INORDER TRAVERSAL IS : ";
-    inorder(root);
+    cout << "PREORDER TRAVERSAL IS : ";
+    preorder(root);
 }
