@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 class TreeNode
 {
@@ -29,7 +30,7 @@ TreeNode *buildtree(TreeNode *root)
     root->right = buildtree(root->right);
     return root;
 }
-void solve(Node *root, vector<int> &ans, int level)
+void solve(TreeNode *root, vector<int> &ans, int level)
 {
     if (root == NULL)
     {
@@ -43,7 +44,7 @@ void solve(Node *root, vector<int> &ans, int level)
     solve(root->right, ans, level + 1);
 }
 
-vector<int> leftView(Node *root)
+vector<int> leftView(TreeNode *root)
 {
     vector<int> ans;
     solve(root, ans, 0);
@@ -53,6 +54,9 @@ int main()
 {
     TreeNode *root = NULL;
     root = buildtree(root);
+    vector<int> left = leftView(root);
     cout << "LEFT VIEW IS : ";
-    leftView(root);
+    for (int i = 0; i < left.size(); i++)
+        cout << left[i] << " ";
+    return 0;
 }
