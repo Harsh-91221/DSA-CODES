@@ -1,19 +1,28 @@
 #include <iostream>
+#include <vector>
 using namespace std;
-int pivotpoint(int a[], int n)
+int pivot(vector<int> &arr)
 {
     int s = 0;
-    int e = n - 1;
+    int e = arr.size() - 1;
     int mid = s + (e - s) / 2;
     while (s < e)
     {
-        if (a[mid] >= a[0])
+        if (mid + 1 < arr.size() && arr[mid + 1] > arr[mid])
         {
-            s = mid + 1;
+            return arr[mid];
+        }
+        if (mid - 1 > 0 && arr[mid - 1] < arr[mid])
+        {
+            return arr[mid];
+        }
+        if (arr[s] > arr[mid])
+        {
+            e = mid - 1;
         }
         else
         {
-            e = mid;
+            s = mid;
         }
         mid = s + (e - s) / 2;
     }
@@ -21,7 +30,7 @@ int pivotpoint(int a[], int n)
 }
 int main()
 {
-    int a[5] = {5, 7, 1, 3, 4};
-    int b = pivotpoint(a, 5);
-    cout << b << endl;
+    vector<int> arr{2, 4, 7, 8, 6, 5, 4, 1};
+    int ans = pivot(arr);
+    cout << ans;
 }

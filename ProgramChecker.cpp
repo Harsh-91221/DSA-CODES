@@ -1,21 +1,36 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-void subsequence(string str, string output, int i)
+int pivot(vector<int> &arr)
 {
-    if (i >= str.length())
+    int s = 0;
+    int e = arr.size() - 1;
+    int mid = s + (e - s) / 2;
+    while (s < e)
     {
-        cout << output << endl;
-        return;
+        if (mid + 1 < arr.size() && arr[mid + 1] > arr[mid])
+        {
+            return arr[mid];
+        }
+        if (mid - 1 > 0 && arr[mid - 1] < arr[mid])
+        {
+            return arr[mid];
+        }
+        if (arr[s] > arr[mid])
+        {
+            e = mid - 1;
+        }
+        else
+        {
+            s = mid;
+        }
+        mid = s + (e - s) / 2;
     }
-    subsequence(str, output, i + 1);
-    output.push_back(str[i]);
-    subsequence(str, output, i + 1);
+    return s;
 }
 int main()
 {
-    int i = 0;
-    string str = "abc";
-    string output = "";
-    subsequence(str, output, i);
+    vector<int> arr{2, 4, 7, 8, 6, 5, 4, 1};
+    int ans = pivot(arr);
+    cout << ans;
 }
