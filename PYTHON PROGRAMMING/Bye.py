@@ -52,11 +52,23 @@
 #             list3[i][j]=list3[i][j] + list1[i][k] * list2[k][j]
 #             for i in range(len(list3)):
 #                 print()
-List = [10, 20, 14]
-print("\nList of numbers: ")
-print(List)
+# List = [10, 20, 14]
+# print("\nList of numbers: ")
+# print(List)
 
-List = ["Geeks", "For", "Geeks"]
-print("\nList Items: ")
-print(List[0])
-print(List[2])
+# List = ["Geeks", "For", "Geeks"]
+# print("\nList Items: ")
+# print(List[0])
+# print(List[2])
+
+
+def selsort(L):
+    suffixstart = 0
+    while suffixstart != len(L):
+        for i in range(suffixstart, len(L)):
+            if (L[i] < L[suffixstart]):
+                L[suffixstart], L[i] = L[i], L[suffixstart]
+        suffixstart += 1
+L = [6, 1, 9, 4]
+selsort(L)
+print(L)
