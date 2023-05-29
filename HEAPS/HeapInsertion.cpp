@@ -32,25 +32,31 @@ public:
 int main()
 {
     heap h;
-    h.arr[0] = -1;
-    h.arr[1] = 100;
-    h.arr[2] = 50;
-    h.arr[3] = 25;
-    h.arr[4] = 12;
-    h.arr[5] = 6;
-    h.arr[6] = 3;
-    h.arr[7] = 1;
-    h.size = 7;
+    // h.arr[0] = -1;
+    // h.arr[1] = 100;
+    // h.arr[2] = 50;
+    // h.arr[3] = 25;
+    // h.arr[4] = 12;
+    // h.arr[5] = 6;
+    // h.arr[6] = 3;
+    // h.arr[7] = 1;
+    h.insert(50);
+    h.insert(30);
+    h.insert(70);
+    h.insert(40);
+    h.insert(80);
+    h.insert(100);
+    // h.size = 7;
     cout << "PRINTING THE HEAP " << endl;
-    for (int i = 0; i <= h.size; i++)
+    for (int i = 1; i <= h.size; i++)
     {
         cout << h.arr[i] << " ";
     }
     cout << endl;
-    h.insert(30);
-    cout << "PRINTING THE HEAP AFTER INSERT " << endl;
-    for (int i = 0; i <= h.size; i++)
-    {
-        cout << h.arr[i] << " ";
-    }
+    // h.insert(30);
+    // cout << "PRINTING THE HEAP AFTER INSERT " << endl;
+    // for (int i = 0; i <= h.size; i++)
+    // {
+    //     cout << h.arr[i] << " ";
+    // }
 }
