@@ -1,26 +1,31 @@
 #include <iostream>
+#include <vector>
+#include <limits.h>
 using namespace std;
-bool check(int arr[])
+int solve(vector<int> &arr, int target)
 {
-    for (int i = 0; i < 5; i++)
+    if (target == 0)
     {
-        if (arr[i] > arr[i + 1])
+        return 0;
+    }
+    if (target < 0)
+    {
+        return INT_MAX;
+    }
+    int mini = INT_MAX;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        int ans = solve(arr, target - arr[i]);
+        if (ans != INT_MAX)
         {
-            return false;
+            mini = min(mini, ans + 1);
         }
     }
-    return true;
+    return mini;
 }
 int main()
 {
-    int arr[5] = {2, 90, 6, 9, 10};
-    bool ans = check(arr);
-    if (ans)
-    {
-        cout << "SORTED" << endl;
-    }
-    else
-    {
-        cout << "NOT SORTED" << endl;
-    }
+    vector<int> arr{1, 2, 5};
+    int target = 10;
+    cout << solve(arr, target);
 }

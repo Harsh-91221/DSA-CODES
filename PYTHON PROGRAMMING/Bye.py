@@ -62,13 +62,23 @@
 # print(List[2])
 
 
-def selsort(L):
-    suffixstart = 0
-    while suffixstart != len(L):
-        for i in range(suffixstart, len(L)):
-            if (L[i] < L[suffixstart]):
-                L[suffixstart], L[i] = L[i], L[suffixstart]
-        suffixstart += 1
-L = [6, 1, 9, 4]
-selsort(L)
-print(L)
+# def selsort(L):
+#     suffixstart = 0
+#     while suffixstart != len(L):
+#         for i in range(suffixstart, len(L)):
+#             if (L[i] < L[suffixstart]):
+#                 L[suffixstart], L[i] = L[i], L[suffixstart]
+#         suffixstart += 1
+# L = [6, 1, 9, 4]
+# selsort(L)
+# print(L)
+
+
+n = int(input("ENTER A NUMBER: "))
+it = int(input("ENTER NUMBER OF ITERATION: "))
+approx = n/2
+for i in range(it):
+    approx = n/approx
+    better = approx/2
+    approx = better
+    print("NEWTONS SQUARE ROOT AT ", n, "AFTER", i+1, "ITERATIONS IS", approx)
