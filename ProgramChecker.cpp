@@ -1,27 +1,33 @@
-// input
-// 3
-// RRG
+// Input
+// 40047
 
-// output
-// 1
+// Output
+// NO
 
-/*Explanation-> Count the minimum number of stones to take from the table so that any two neighboring stones had different colors.*/
+/*Explanation-> Petya loves lucky numbers.
+We all know that lucky numbers are the positive integers whose decimal representations contain only the lucky digits 4 and 7.
+For example, numbers 47, 744, 4 are lucky and 5, 17, 467 are not.*/
 
 #include <iostream>
 using namespace std;
 int main()
 {
-    int n;
-    int count = 0;
+    long long int n, count = 0;
     cin >> n;
-    string s = "";
-    cin >> s;
-    for (int i = 0; i < n; i++)
+    while (n != 0)
     {
-        if (s[i] == s[i + 1])
+        if (n % 10 == 4 || n % 10 == 7)
         {
             count++;
         }
+        n = n / 10;
     }
-    cout << count;
+    if (count == 4 || count == 7)
+    {
+        cout << "YES";
+    }
+    else
+    {
+        cout << "NO";
+    }
 }
