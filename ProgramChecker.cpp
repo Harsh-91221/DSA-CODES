@@ -1,37 +1,21 @@
 #include <iostream>
-#include <algorithm>
+#include <vector>
 using namespace std;
 int main()
 {
-    int a[100], n, count = 0, sum1 = 0, sum2 = 0;
-    cin >> n;
-    for (int i = 0; i < n; i++)
+    vector<int> nums;
+    int n = nums.size();
+    for (int i = 1; i <= n; i++)
     {
-        cin >> a[i];
-        sum1 += a[i];
+        cin >> nums[i];
     }
-    int half = sum1 / 2;
-    for (int i = 0; i < n - 1; i++)
+    long long int ans = 0;
+    for (int i = 1; i <= nums.size(); i++)
     {
-        for (int j = 0; j < n - i - 1; j++)
+        if (n % i == 0)
         {
-            if (a[j] > a[j + 1])
-            {
-                int temp = a[j];
-                a[j] = a[j + 1];
-                a[j + 1] = temp;
-            }
+            ans += nums[i] * nums[i];
         }
     }
-    for (int i = n - 1; i >= 0; i--)
-    {
-        sum2 += a[i];
-        count++;
-        if (sum2 > half)
-        {
-            break;
-        }
-    }
-    cout << count;
-    return 0;
+    cout << ans;
 }
