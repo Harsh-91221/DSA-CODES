@@ -1,21 +1,38 @@
 #include <iostream>
-#include <vector>
 using namespace std;
-int main()
+int solve(int arr[], int n)
 {
-    vector<int> nums;
-    int n = nums.size();
-    for (int i = 1; i <= n; i++)
+    int first = INT_MIN;
+    int second = INT_MIN;
+    int third = INT_MIN;
+    for (int i = 0; i < n; i++)
     {
-        cin >> nums[i];
-    }
-    long long int ans = 0;
-    for (int i = 1; i <= nums.size(); i++)
-    {
-        if (n % i == 0)
+        if (arr[i] == NULL)
         {
-            ans += nums[i] * nums[i];
+            continue;
+        }
+        else if (arr[i] >= first)
+        {
+            third = second;
+            second = first;
+            first = arr[i];
+        }
+        else if (arr[i] >= second)
+        {
+            third = second;
+            second = arr[i];
+        }
+        else if (arr[i] >= third)
+        {
+            third = arr[i];
         }
     }
+    return third;
+}
+int main()
+{
+    int arr[6] = {2, 3, 7, NULL, 1, 9};
+    int n = 6;
+    int ans = solve(arr, n);
     cout << ans;
 }
