@@ -1,38 +1,38 @@
 #include <iostream>
+#include <vector>
 using namespace std;
-int solve(int arr[], int n)
+void solve(string s, vector<int> &ans)
 {
-    int first = INT_MIN;
-    int second = INT_MIN;
-    int third = INT_MIN;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < s.length(); i++)
     {
-        if (arr[i] == NULL)
+        if (s[i] >= '0' && s[i] <= '9')
         {
-            continue;
-        }
-        else if (arr[i] >= first)
-        {
-            third = second;
-            second = first;
-            first = arr[i];
-        }
-        else if (arr[i] >= second)
-        {
-            third = second;
-            second = arr[i];
-        }
-        else if (arr[i] >= third)
-        {
-            third = arr[i];
+            ans.push_back(s[i] - '0');
         }
     }
-    return third;
 }
 int main()
 {
-    int arr[6] = {2, 3, 7, NULL, 1, 9};
-    int n = 6;
-    int ans = solve(arr, n);
-    cout << ans;
+    vector<int> ans;
+    string s = "Hello 123 world 456";
+    solve(s, ans);
+    for (int i = 0; i < ans.size(); i++)
+    {
+        cout << ans[i];
+    }
+    cout << endl;
+    int sum = 0;
+    for (int i = 0; i < ans.size(); i++)
+    {
+        sum = sum + ans[i];
+    }
+    cout << sum;
+    // int s = 0, r = 0;
+    // while (num != 0)
+    // {
+    //     r = num % 10;
+    //     s = s + r;
+    //     num = num / 10;
+    // }
+    // cout << s;
 }
