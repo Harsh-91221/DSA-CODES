@@ -1,38 +1,77 @@
 #include <iostream>
 #include <vector>
+#include <queue>
 using namespace std;
-void solve(string s, vector<int> &ans)
+
+const int MAX_SOLDIERS = 2e5 + 5;
+
+vector<int> adj[MAX_SOLDIERS];
+int indegree[MAX_SOLDIERS];
+
+bool canArrange(int n, int m)
 {
-    for (int i = 0; i < s.length(); i++)
+    for (int i = 1; i <= n; ++i)
     {
-        if (s[i] >= '0' && s[i] <= '9')
+        adj[i].clear();
+        indegree[i] = 0;
+    }
+
+    for (int i = 0; i < m; ++i)
+    {
+        int ai, bi, di;
+        cin >> ai >> bi >> di;
+        adj[bi].push_back(ai);
+        indegree[ai]++;
+    }
+
+    queue<int> q;
+    for (int i = 1; i <= n; ++i)
+    {
+        if (indegree[i] == 0)
         {
-            ans.push_back(s[i] - '0');
+            q.push(i);
         }
     }
+
+    int count = 0;
+    while (!q.empty())
+    {
+        int curr = q.front();
+        q.pop();
+        count++;
+
+        for (int next : adj[curr])
+        {
+            indegree[next]--;
+            if (indegree[next] == 0)
+            {
+                q.push(next);
+            }
+        }
+    }
+
+    return count == n;
 }
+
 int main()
 {
-    vector<int> ans;
-    string s = "Hello 123 world 456";
-    solve(s, ans);
-    for (int i = 0; i < ans.size(); i++)
+    int t;
+    cin >> t;
+
+    while (t--)
     {
-        cout << ans[i];
+        int n, m;
+        cin >> n >> m;
+
+        if (canArrange(n, m))
+        {
+            cout << "YES" << endl;
+        }
+        else
+        {
+            cout << "NO" << endl;
+        }
     }
-    cout << endl;
-    int sum = 0;
-    for (int i = 0; i < ans.size(); i++)
-    {
-        sum = sum + ans[i];
-    }
-    cout << sum;
-    // int s = 0, r = 0;
-    // while (num != 0)
-    // {
-    //     r = num % 10;
-    //     s = s + r;
-    //     num = num / 10;
-    // }
-    // cout << s;
+
+    return 0;
 }
