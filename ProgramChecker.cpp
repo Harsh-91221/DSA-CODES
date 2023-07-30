@@ -1,12 +1,9 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-void print(Tree* root,int start,int end)
+int main()
 {
-    if(start>end)
-    {
-        return;
-    }
-    print(root->left,start+1,end);
-    cout<<root<<" ";
-    print(root->right,start,end-1);
+    int b = 2;
+    string s = "200";
+    int ans = b + stoi(s);
+    cout << ans;
 }
