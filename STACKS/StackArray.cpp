@@ -6,7 +6,7 @@ public:
     // PROPERTIES
     int *arr;
     int top;
-    int size;
+    int size; //REPRESENTS ARRAY SIZE
 
     // BEHAVIOUR
     Stack(int size)
