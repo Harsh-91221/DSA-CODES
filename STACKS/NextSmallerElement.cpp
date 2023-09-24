@@ -11,7 +11,9 @@ vector<int> nextSmallerElement(vector<int> &arr, int n)
         {
             s.pop();
         }
+        // CHOTA ELEMENT MIL GAYA STORE IN ANS
         ans[i] = s.top();
+        // PUSH KARDO CURR KO
         s.push(curr);
     }
     return ans;
