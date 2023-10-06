@@ -1,63 +1,59 @@
 #include <iostream>
+#include <vector>
 using namespace std;
-void merge(int *a, int s, int e)
+void merge(vector<int> &nums, int low, int mid, int high)
 {
-    int mid = s + (e - s) / 2;
-    int len1 = mid - s + 1;
-    int len2 = e - mid;
-    int *first = new int[len1];
-    int *second = new int[len2];
-    // COPY VALUES
-    int mainArrayIndex = s;
-    for (int i = 0; i < len1; i++)
+    vector<int> ans;
+    int left = low;
+    int right = mid + 1;
+    while (left <= mid && right <= high)
     {
-        first[i] = a[mainArrayIndex++];
-    }
-    int mainArrayIndex = mid + 1;
-    for (int i = 0; i < len2; i++)
-    {
-        second[i] = a[mainArrayIndex++];
-    }
-    // MERGE TWO SORTED ARRAY
-    int index1 = 0;
-    int index2 = 0;
-    mainArrayIndex = s;
-    while (index1 < len1 && index2 < len2)
-        if (first[index1] < second[index2])
+        if (nums[left] <= nums[right])
         {
-            a[mainArrayIndex++] = first[index1++];
+            ans.push_back(nums[left]);
+            left++;
         }
         else
         {
-            a[mainArrayIndex++] = second[index2++];
+            ans.push_back(nums[right]);
+            right++;
         }
-    while (index1 < len1)
-    {
-        a[mainArrayIndex++] = first[index1++];
     }
-    while (index2 < len2)
+    while (left <= mid)
     {
-        a[mainArrayIndex++] = second[index2++];
+        ans.push_back(nums[left]);
+        left++;
     }
-    delete[] first;
-    delete[] second;
+    while (right <= high)
+    {
+        ans.push_back(nums[right]);
+        right++;
+    }
+    for (int i = low; i <= high; i++)
+    {
+        nums[i] = ans[i - low];
+    }
 }
-void mergesort(int *a, int s, int e)
+void mergesort(vector<int> &nums, int low, int high)
 {
-    if (s >= e)
+    if (low == high)
+    {
         return;
-    int mid = s + (e - s) / 2;
-    mergesort(a, s, mid);     // FOR SORTING LEFT PART
-    mergesort(a, mid + 1, e); // FOR SORTING RIGHT PART
-    merge(a, s, e);           // MERGING BOTH SORTED ARRAY
+    }
+    int mid = (low + high) / 2;
+    mergesort(nums, low, mid);
+    mergesort(nums, mid + 1, high);
+    merge(nums, low, mid, high);
 }
 int main()
 {
-    int a[13] = {87, 43, 6, 2, 4, 0, 8, 1, 54, 23, 88, 69, 65};
-    mergesort(a, 0, 13);
-    merge(a, 0, 13);
-    for (int i = 0; i < 13; i++)
+    vector<int> a = {87, 43, 6, 2, 4, 0, 8, 1, 54, 23, 88, 69, 65};
+    int n = a.size();
+    mergesort(a, 0, n - 1);
+    for (int i = 0; i < n; i++)
     {
         cout << a[i] << " ";
     }
+    cout << endl;
+    return 0;
 }
