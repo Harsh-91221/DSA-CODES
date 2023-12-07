@@ -1,12 +1,11 @@
 #include <bits/stdc++.h>
 class Queue
 {
+public:
     int *arr;
     int qfront;
     int rear;
     int size;
-
-public:
     Queue()
     {
         size = 100001;
@@ -33,6 +32,7 @@ public:
     {
         if (rear == size)
         {
+            return;
         }
         else
         {
