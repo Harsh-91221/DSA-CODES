@@ -2,7 +2,6 @@
 using namespace std;
 class Hero
 {
-    // ENCAPSULATION
 private:
     string name;
     int power;
