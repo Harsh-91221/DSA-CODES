@@ -8,7 +8,7 @@ private:
     int ki;
 
 public:
-    getpower()
+    int getpower()
     {
         return this->power;
     }
